@@ -99,3 +99,29 @@ const word = "hello";
 const text = "hello there";
 boldPassage(word, text);
 Expected Output: "<p><b>hello</b> there</p>"
+
+Test: "It should wrap words that match in `b` tags but not words that don't."
+Code:
+const word = "hello";
+const text = "hello there";
+boldPassage(word, text);
+
+Describe: commonWords()
+
+Test: "It should return an empty string for an empty string."
+Code:commonWords("", "red");
+Expected Output: ""
+
+Test: "It should return the number of times a word occurs in the text provided using the numberOfOccurrencesInText function"
+
+Describe: bannedWords()
+Test: "It should return 0 for words that match a specific string."
+Code: 
+const word = "zoinks"
+bannedWords("zoinks")
+
+Test: "It should omit the word 'zoinks' from a string."
+Code:
+const word = "hello zoinks"
+bannedWords(word)
+Expected Outcome: "hello "

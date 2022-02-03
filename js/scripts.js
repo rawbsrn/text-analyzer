@@ -34,6 +34,46 @@ function numberOfOccurrencesInText(word, text) {
   return wordCount;
 }
 
+
+function findMostRepeatedWord(text) {
+  if (text.trim().length === 0) {
+    return 0;
+  }
+
+  let words = text.split(" ");
+
+
+  let occurances = {};
+
+  for (let word of words) {
+    if (occurances[word]) {
+      occurances[word]++;
+    } else {
+      occurances[word] = 1;
+    }
+  }
+
+  let max = 0;
+  let mostRepeatedWord = '';
+
+  for (let word of words) {
+    if (occurances[word] > max) {
+      max = occurances[word];
+      mostRepeatedWord = word;
+    }
+  }
+  return [mostRepeatedWord + " = " + max];
+}
+
+function bannedWords(word) {
+  if (noInputtedWord(word, text)) {
+    return "";
+  }
+  let word = "hello zoinks"
+  let wordString = text.split(" ");
+  }
+}
+
 // UI Logic
 
 function boldPassage(word, text) {
@@ -65,5 +105,6 @@ $(document).ready(function(){
     $("#total-count").html(wordCount);
     $("#selected-count").html(occurrencesOfWord);
     $("#bolded-passage").html(boldPassage(word, passage));
+    $("#most-common").html(findMostRepeatedWord(passage));
   });
 });
